@@ -1,0 +1,6 @@
+{
+  "name": "Tselmegbayar Portfolio & AI Assistants",
+  "description": "Interactive portfolio for Tselmegbayar featuring Me-AI assistant and Idol Coach Jensen Huang AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
