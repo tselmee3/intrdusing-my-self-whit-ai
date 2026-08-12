@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "Score": {
+      "title": "Score",
+      "description": "Game scores and player answers",
+      "type": "object",
+      "properties": {
+        "playerName": { "type": "string" },
+        "score": { "type": "number" },
+        "gameType": { "type": "string" },
+        "maxStreak": { "type": "number" },
+        "answers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "questionId": { "type": "number" },
+              "heroName": { "type": "string" },
+              "selectedAnswer": { "type": "string" },
+              "correctAnswer": { "type": "string" },
+              "isCorrect": { "type": "boolean" }
+            }
+          }
+        },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["playerName", "score", "gameType"]
+    }
+  },
+  "firestore": {
+    "/scores/{scoreId}": {
+      "entity": "Score",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "playerName": { "type": "string" },
+          "score": { "type": "number" },
+          "gameType": { "type": "string" },
+          "maxStreak": { "type": "number" },
+          "answers": { "type": "array" },
+          "createdAt": { "type": "string" }
+        },
+        "required": ["playerName", "score", "gameType"]
+      }
+    }
+  }
+}

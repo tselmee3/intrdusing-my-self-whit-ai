@@ -1,0 +1,229 @@
+export interface HeroQuestion {
+  id: number;
+  heroName: string;
+  animeTitle: string;
+  emojis: string;
+  avatarSymbol?: string;
+  options: string[];
+  correctIndex?: number;
+  answer: string;
+  meta?: {
+    difficulty?: "EASY" | "MID" | "HARD" | string;
+    points?: number;
+    hint?: string;
+    quote?: string;
+    powers?: string;
+  };
+}
+
+export const HERO_QUESTIONS_DATA: HeroQuestion[] = [
+  // EASY QUESTIONS (1 - 6) - 5 Points
+  {
+    id: 1,
+    heroName: "Monkey D. Luffy",
+    animeTitle: "One Piece",
+    emojis: "👒🏴‍☠️🍖🌊⚡",
+    avatarSymbol: "👒",
+    options: ["Monkey D. Luffy", "Roronoa Zoro", "Vinsmoke Sanji", "Portgas D. Ace"],
+    correctIndex: 0,
+    answer: "Monkey D. Luffy",
+    meta: {
+      difficulty: "EASY",
+      points: 5,
+      hint: "Сүрлэн малгайт далайн дээрэмчдийн ахмад, резинэн биетэй баатар",
+      quote: "Би Далайн Дээрэмчдийн Хаан болно!",
+      powers: "Gomu Gomu no Mi (Gear 5), Haki",
+    },
+  },
+  {
+    id: 2,
+    heroName: "Naruto Uzumaki",
+    animeTitle: "Naruto",
+    emojis: "🍥🍜🦊🥷🍃",
+    avatarSymbol: "🍥",
+    options: ["Sasuke Uchiha", "Naruto Uzumaki", "Kakashi Hatake", "Gaara"],
+    correctIndex: 1,
+    answer: "Naruto Uzumaki",
+    meta: {
+      difficulty: "EASY",
+      points: 5,
+      hint: "Коноха тосгоны 7-р Хокаге, дотроо 9 сүүлт үнэгний сүнстэй нинжа",
+      quote: "Энэ бол миний нинжагийн зам!",
+      powers: "Rasengan, Shadow Clone Jutsu, Nine-Tails Sage Mode",
+    },
+  },
+  {
+    id: 3,
+    heroName: "Son Goku",
+    animeTitle: "Dragon Ball Z",
+    emojis: "🐉🟠💥🥋⚡",
+    avatarSymbol: "⚡",
+    options: ["Vegeta", "Piccolo", "Gohan", "Son Goku"],
+    correctIndex: 3,
+    answer: "Son Goku",
+    meta: {
+      difficulty: "EASY",
+      points: 5,
+      hint: "Сайян угсааны тулаанч, 7 шидэт сувдыг цуглуулагч, Камехамеха мастер",
+      quote: "Би Дэлхийг хамгаалагч Сайян тулаанч Сон Гоку байна!",
+      powers: "Kamehameha, Super Saiyan, Ultra Instinct",
+    },
+  },
+  {
+    id: 4,
+    heroName: "Saitama",
+    animeTitle: "One Punch Man",
+    emojis: "👊👨‍โ🥊🛒💥",
+    avatarSymbol: "👊",
+    options: ["Genos", "Saitama", "Mumen Rider", "Bang"],
+    correctIndex: 1,
+    answer: "Saitama",
+    meta: {
+      difficulty: "EASY",
+      points: 5,
+      hint: "Өдөр бүр 100 суниаж, 10км гүйснээр үс нь унаж ганц цохилтоор ялдаг баатар",
+      quote: "Би зүгээр л хоббигоороо баатар хийж байгаа хүн байна.",
+      powers: "One Punch Lethal Strength, Invulnerability",
+    },
+  },
+  {
+    id: 5,
+    heroName: "Izuku Midoriya (Deku)",
+    animeTitle: "My Hero Academia",
+    emojis: "🟢🥦🦸‍♂️👟💥",
+    avatarSymbol: "🥦",
+    options: ["Katsuki Bakugo", "Shoto Todoroki", "All Might", "Izuku Midoriya (Deku)"],
+    correctIndex: 3,
+    answer: "Izuku Midoriya (Deku)",
+    meta: {
+      difficulty: "EASY",
+      points: 5,
+      hint: "All Might-аас 'One For All' хүчийг өвлөн авсан ногоон үстэй баатар",
+      quote: "Миний баатар болох түүх эндээс эхэлж байна!",
+      powers: "One For All, Detroit Smash, Danger Sense",
+    },
+  },
+  {
+    id: 6,
+    heroName: "Nezuko Kamado",
+    animeTitle: "Demon Slayer",
+    emojis: "🎋🎀🌸👹💖",
+    avatarSymbol: "🎋",
+    options: ["Kanao Tsuyuri", "Shinobu Kocho", "Nezuko Kamado", "Mitsuri Kanroji"],
+    correctIndex: 2,
+    answer: "Nezuko Kamado",
+    meta: {
+      difficulty: "EASY",
+      points: 5,
+      hint: "Амандаа хулсан бөглөөтэй, ахаа болон хүмүүсийг хамгаалдаг чөтгөр охин",
+      quote: "Хүмүүс бол миний гэр бүл, би тэднийг хамгаална!",
+      powers: "Blood Demon Art (Exploding Blood), Size Manipulation",
+    },
+  },
+
+  // MID QUESTIONS (7 - 10) - 10 Points
+  {
+    id: 7,
+    heroName: "Tanjiro Kamado",
+    animeTitle: "Demon Slayer (Kimetsu no Yaiba)",
+    emojis: "⚔️🌊🎋👹🎴",
+    avatarSymbol: "🎴",
+    options: ["Zenitsu Agatsuma", "Inosuke Hashibira", "Tanjiro Kamado", "Giyu Tomioka"],
+    correctIndex: 2,
+    answer: "Tanjiro Kamado",
+    meta: {
+      difficulty: "MID",
+      points: 10,
+      hint: "Дүүгээ чөтгөрөөс хүн болгохоор тэмцэж буй нарны амьсгалт чөтгөрийн ангууч",
+      quote: "Би хэзээ ч бууж өгөхгүй, дүүгээ заавал аварна!",
+      powers: "Water Breathing, Hinokami Kagura (Sun Breathing)",
+    },
+  },
+  {
+    id: 8,
+    heroName: "Satoru Gojo",
+    animeTitle: "Jujutsu Kaisen",
+    emojis: "🕶️⚡👁️🔮🌌",
+    avatarSymbol: "👁️",
+    options: ["Satoru Gojo", "Suguru Geto", "Ryomen Sukuna", "Megumi Fushiguro"],
+    correctIndex: 0,
+    answer: "Satoru Gojo",
+    meta: {
+      difficulty: "MID",
+      points: 10,
+      hint: "Цагаан үстэй, нүдний боолттой хамгийн хүчтэй хараалын багш",
+      quote: "Хамаагүй ээ, учир нь би хамгийн хүчтэй нь!",
+      powers: "Limitless, Six Eyes, Unlimited Void",
+    },
+  },
+  {
+    id: 9,
+    heroName: "Levi Ackerman",
+    animeTitle: "Attack on Titan (Shingeki no Kyojin)",
+    emojis: "⚔️🧹🛡️🟩🐎",
+    avatarSymbol: "⚔️",
+    options: ["Eren Yeager", "Armin Arlert", "Levi Ackerman", "Erwin Smith"],
+    correctIndex: 2,
+    answer: "Levi Ackerman",
+    meta: {
+      difficulty: "MID",
+      points: 10,
+      hint: "Хүн төрөлхтний хамгийн хүчтэй цэрэг, Тагнуулын корпусын ахмад",
+      quote: "Өөрийнхөө шийдвэрт хэзээ ч харамсахгүй байхыг сонго.",
+      powers: "Ackerman Instincts, ODM Gear Mastery",
+    },
+  },
+  {
+    id: 10,
+    heroName: "Kakashi Hatake",
+    animeTitle: "Naruto",
+    emojis: "⚡⚡📖👁️🥷",
+    avatarSymbol: "👁️",
+    options: ["Jiraiya", "Kakashi Hatake", "Minato Namikaze", "Itachi Uchiha"],
+    correctIndex: 1,
+    answer: "Kakashi Hatake",
+    meta: {
+      difficulty: "MID",
+      points: 10,
+      hint: "Баруун нүдэндээ Шарингантай, 'Хуулагч Нинжа' нэртэй 7-р багийн багш",
+      quote: "Дүрмийг зөрчсөн нинжа бол хог. Харин найзаа хаясан нинжа бол хогноос ч дор!",
+      powers: "Chidori, Sharingan, Kamui",
+    },
+  },
+
+  // HARD QUESTIONS (11 - 12) - 15 Points
+  {
+    id: 11,
+    heroName: "Roronoa Zoro",
+    animeTitle: "One Piece",
+    emojis: "⚔️⚔️⚔️🍶💤🧭",
+    avatarSymbol: "⚔️",
+    options: ["Roronoa Zoro", "Trafalgar Law", "Shanks", "Mihawk"],
+    correctIndex: 0,
+    answer: "Roronoa Zoro",
+    meta: {
+      difficulty: "HARD",
+      points: 15,
+      hint: "Гуравласан сэлэмний техниктэй, замдаа дандаа төөрчихдөг сэлэмчин баатар",
+      quote: "Нүүрэндээ шархтай сэлэмчин бол ичгүүр!",
+      powers: "Three-Sword Style (Santoryu), Asura, Haki",
+    },
+  },
+  {
+    id: 12,
+    heroName: "Ichigo Kurosaki",
+    animeTitle: "Bleach",
+    emojis: "🗡️🟠💀🥋⚡",
+    avatarSymbol: "🗡️",
+    options: ["Uryu Ishida", "Renji Abarai", "Byakuya Kuchiki", "Ichigo Kurosaki"],
+    correctIndex: 3,
+    answer: "Ichigo Kurosaki",
+    meta: {
+      difficulty: "HARD",
+      points: 15,
+      hint: "Улбар шар үстэй Сүнсний ангууч (Shinigami), Банкай ба Холлоу хүчтэй",
+      quote: "Би бүгдийг биш, зөвхөн өөрийнхөө хайртай хүмүүсийг хамгаалж чадвал болоо!",
+      powers: "Bankai (Tensa Zangetsu), Getsuga Tensho, Hollowification",
+    },
+  },
+];

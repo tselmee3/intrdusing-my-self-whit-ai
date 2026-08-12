@@ -24,11 +24,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenIdolChat, onOpen
 
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            Компьютерийн техник, <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              Инженеринг & AI
-            </span>{" "}
-            Сонирхогч
+            Компьютерийн техник сонирхогч
           </h1>
 
           {/* Bio paragraph */}

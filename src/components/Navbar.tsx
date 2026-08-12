@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Bot, Cpu, FolderKanban, Monitor, User, Menu, X, Sparkles } from "lucide-react";
+import { Bot, Cpu, FolderKanban, Monitor, User, Menu, X, Sparkles, Gamepad2 } from "lucide-react";
 import { PORTFOLIO_INFO } from "../data/portfolioData";
 
 interface NavbarProps {
   onOpenIdolChat: () => void;
   onOpenMeChat: () => void;
+  onOpenAiGames: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenIdolChat, onOpenMeChat }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenIdolChat, onOpenMeChat, onOpenAiGames }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
@@ -74,14 +75,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenIdolChat, onOpenMeChat }) 
           {/* Special Prominent "My Idol" Menu Button */}
           <button
             onClick={onOpenIdolChat}
-            className="ml-2 px-3.5 py-2 rounded-xl text-sm font-medium bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 hover:from-emerald-500/30 hover:via-teal-500/30 hover:to-cyan-500/30 border border-emerald-500/40 text-emerald-300 hover:text-emerald-200 transition-all shadow-md shadow-emerald-500/10 flex items-center gap-2 group cursor-pointer"
+            className="ml-1 px-3 py-2 rounded-xl text-sm font-medium bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 hover:from-emerald-500/30 hover:via-teal-500/30 hover:to-cyan-500/30 border border-emerald-500/40 text-emerald-300 hover:text-emerald-200 transition-all shadow-md shadow-emerald-500/10 flex items-center gap-1.5 group cursor-pointer"
             id="nav-my-idol-btn"
           >
             <Bot className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
             <span className="font-semibold">🤖 My Idol</span>
-            <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-emerald-500/30 text-emerald-200">
-              Jensen Huang
-            </span>
           </button>
 
           <button
@@ -92,16 +90,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenIdolChat, onOpenMeChat }) 
             <Sparkles className="w-4 h-4 text-indigo-400" />
             Me-AI
           </button>
+
+          {/* Prominent TOP RIGHT CORNER "MY AI GAMES" Button */}
+          <button
+            onClick={onOpenAiGames}
+            className="ml-2 px-3.5 py-2 rounded-xl text-sm font-extrabold bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 hover:from-cyan-400 hover:via-indigo-400 hover:to-purple-500 text-white shadow-lg shadow-cyan-500/25 hover:scale-105 transition-all flex items-center gap-2 group cursor-pointer border border-cyan-300/40"
+            id="nav-my-ai-games-btn"
+          >
+            <Gamepad2 className="w-4 h-4 text-cyan-200 group-hover:rotate-12 transition-transform" />
+            <span className="tracking-wide">MY AI GAMES</span>
+            <span className="w-2 h-2 rounded-full bg-cyan-300 animate-ping" />
+          </button>
         </div>
 
         {/* Mobile Hamburger Button */}
         <div className="flex items-center gap-2 md:hidden">
           <button
-            onClick={onOpenIdolChat}
-            className="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 flex items-center gap-1"
-            id="nav-mobile-idol-btn"
+            onClick={onOpenAiGames}
+            className="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 text-white flex items-center gap-1 shadow-md cursor-pointer"
+            id="nav-mobile-ai-games-btn"
           >
-            <span>🤖 Idol</span>
+            <Gamepad2 className="w-3.5 h-3.5" />
+            <span>MY AI GAMES</span>
           </button>
 
           <button
@@ -143,6 +153,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenIdolChat, onOpenMeChat }) 
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
+                onOpenAiGames();
+              }}
+              className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-cyan-600/30 to-indigo-600/30 border border-cyan-500/50 text-cyan-200 font-extrabold text-sm flex items-center justify-between"
+            >
+              <span className="flex items-center gap-2">
+                <Gamepad2 className="w-4 h-4 text-cyan-400" />
+                🎮 MY AI GAMES
+              </span>
+              <span className="text-xs bg-cyan-500/20 px-2 py-0.5 rounded text-cyan-300 font-mono">
+                Game Studio
+              </span>
+            </button>
+
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
                 onOpenIdolChat();
               }}
               className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600/30 to-teal-600/30 border border-emerald-500/50 text-emerald-200 font-semibold text-sm flex items-center justify-between"
@@ -177,3 +203,4 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenIdolChat, onOpenMeChat }) 
     </nav>
   );
 };
+

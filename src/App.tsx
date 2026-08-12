@@ -7,10 +7,12 @@ import { PcSpecsSection } from "./components/PcSpecsSection";
 import { Footer } from "./components/Footer";
 import { IdolChatModal } from "./components/IdolChatModal";
 import { MeChatWidget } from "./components/MeChatWidget";
+import { MyAiGamesModal } from "./components/MyAiGamesModal";
 
 export default function App() {
   const [isIdolChatOpen, setIsIdolChatOpen] = useState(false);
   const [isMeChatOpen, setIsMeChatOpen] = useState(false);
+  const [isAiGamesOpen, setIsAiGamesOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white flex flex-col">
@@ -18,6 +20,7 @@ export default function App() {
       <Navbar
         onOpenIdolChat={() => setIsIdolChatOpen(true)}
         onOpenMeChat={() => setIsMeChatOpen(true)}
+        onOpenAiGames={() => setIsAiGamesOpen(true)}
       />
 
       {/* Main Content Sections */}
@@ -37,13 +40,19 @@ export default function App() {
         onOpenMeChat={() => setIsMeChatOpen(true)}
       />
 
-      {/* 1. "🤖 My Idol" Chat Modal (Jensen Huang - Idol Coach) */}
+      {/* 1. "MY AI GAMES" Showcase & Playroom Modal */}
+      <MyAiGamesModal
+        isOpen={isAiGamesOpen}
+        onClose={() => setIsAiGamesOpen(false)}
+      />
+
+      {/* 2. "🤖 My Idol" Chat Modal (Jensen Huang - Idol Coach) */}
       <IdolChatModal
         isOpen={isIdolChatOpen}
         onClose={() => setIsIdolChatOpen(false)}
       />
 
-      {/* 2. Messenger-style Popup Widget (Me-AI Assistant) */}
+      {/* 3. Messenger-style Popup Widget (Me-AI Assistant) */}
       <MeChatWidget
         isOpen={isMeChatOpen}
         onToggle={() => setIsMeChatOpen(!isMeChatOpen)}
@@ -52,3 +61,4 @@ export default function App() {
     </div>
   );
 }
+

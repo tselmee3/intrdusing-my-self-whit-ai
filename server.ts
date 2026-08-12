@@ -120,6 +120,66 @@ async function startServer() {
     }
   });
 
+  app.post("/api/generate-game", async (req, res) => {
+    try {
+      const { prompt, theme } = req.body;
+      const ai = getAiClient();
+      const systemInstruction = `You are a creative AI game master. Create an interactive quiz/challenge mini-game structure.
+Return strictly valid JSON with no markdown formatting:
+{
+  "title": "Game Title",
+  "category": "AI Generated",
+  "description": "Short description of the mini game",
+  "difficulty": "Medium",
+  "instructions": "How to play and score points",
+  "questions": [
+    {
+      "question": "Interactive challenge question or puzzle 1",
+      "options": ["Choice A", "Choice B", "Choice C", "Choice D"],
+      "correctIndex": 0,
+      "explanation": "Brief explanation of the answer"
+    },
+    {
+      "question": "Interactive challenge question or puzzle 2",
+      "options": ["Choice A", "Choice B", "Choice C", "Choice D"],
+      "correctIndex": 1,
+      "explanation": "Brief explanation of the answer"
+    },
+    {
+      "question": "Interactive challenge question or puzzle 3",
+      "options": ["Choice A", "Choice B", "Choice C", "Choice D"],
+      "correctIndex": 2,
+      "explanation": "Brief explanation of the answer"
+    }
+  ]
+}`;
+
+      const aiResponse = await ai.models.generateContent({
+        model: "gemini-3.6-flash",
+        contents: [
+          {
+            role: "user",
+            parts: [{ text: `Generate a fun 3-question interactive AI mini game based on this topic: ${prompt || theme || 'Gaming Tech & Math'}` }],
+          },
+        ],
+        config: {
+          systemInstruction,
+          temperature: 0.8,
+        },
+      });
+
+      const rawText = aiResponse.text || "";
+      const cleanedText = rawText.replace(/```json/gi, "").replace(/```/gi, "").trim();
+      const parsedGame = JSON.parse(cleanedText);
+      return res.json({ game: parsedGame });
+    } catch (err: any) {
+      console.error("Generate Game API Error:", err);
+      return res.status(500).json({
+        error: err.message || "Failed to generate AI game.",
+      });
+    }
+  });
+
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
